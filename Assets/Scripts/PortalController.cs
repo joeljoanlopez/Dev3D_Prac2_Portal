@@ -14,13 +14,12 @@ public class PortalController : MonoBehaviour
     public float cameraOffset = 0.6f;
 
     [Header("Other")]
-    public MovementController movementController;
+    public GameObject player;
 
-    // Update is called once per frame
     public void Update()
     {
-        Vector3 position = movementController.transform.position;
-        Vector3 forward = movementController.transform.position;
+        Vector3 position = player.transform.position;
+        Vector3 forward = player.transform.position;
 
         Vector3 localPosition = otherPortal.InverseTransformPoint(position);
         Vector3 localForward = otherPortal.InverseTransformDirection(forward);
@@ -37,8 +36,9 @@ public class PortalController : MonoBehaviour
         mirrorPortal.camera.nearClipPlane = distanceNearClipPlane;
     }
 
-    public void Shoot(Vector3 target)
+    public void SpawnIn(Vector3 position, Quaternion rotation)
     {
-        transform.position = target;
+        transform.position = position;
+        transform.rotation = rotation;
     }
 }
