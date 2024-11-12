@@ -27,6 +27,8 @@ public class MovementController : MonoBehaviour
     private PlayerInput playerInput;
     private Vector3 velocity = Vector3.zero;
     private float verticalRotation;
+    private Vector3 movementDirection;
+    public Vector3 MovementDirection { get { return movementDirection; } }
 
     private void Start()
     {
@@ -70,6 +72,7 @@ public class MovementController : MonoBehaviour
         float maxSpeed = playerInput.actions["Run"].IsPressed() ? runMaxSpeed : walkMaxSpeed;
         Vector3 targetVelocity = (moveInput.x * transform.right + moveInput.y * transform.forward) * maxSpeed;
         velocity = Vector3.Lerp(velocity, targetVelocity, acceleration * Time.deltaTime);
+        movementDirection = (moveInput.x * transform.right + moveInput.y * transform.forward).normalized;
     }
 
     private void HandleJump()

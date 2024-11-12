@@ -279,8 +279,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 0}
   mirrorPortal: {fileID: 0}
-  camera: {fileID: 0}
+  portalCamera: {fileID: 0}
   cameraOffset: 0.6
+  minClipDistance: 0.1
+  maxClipDistance: 1
   player: {fileID: 0}
 --- !u!1 &7429145178661614187
 GameObject:
@@ -293,7 +295,7 @@ GameObject:
   - component: {fileID: 7048696616835711765}
   - component: {fileID: 2112000274531815911}
   - component: {fileID: 2404104245875036679}
-  - component: {fileID: 2117544400396180747}
+  - component: {fileID: 282531341779501078}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -366,8 +368,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2117544400396180747
-CapsuleCollider:
+--- !u!65 &282531341779501078
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -384,8 +386,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 68.42981, z: 1.0000005}
+  m_Center: {x: 0.00000004000998, y: 10.686777, z: -0.0000001546992}
