@@ -13,11 +13,13 @@ public class PortalGunController : MonoBehaviour
     private float timer;
     public float maxPortalDistance = 100f;
     private Camera playerCamera;
+    private AttachObjectController attachObjectController;
 
     private void Start()
     {
         timer = coolDown;
         playerCamera = Camera.main;
+        attachObjectController = GetComponent<AttachObjectController>();
     }
 
     private void Update()
@@ -27,7 +29,7 @@ public class PortalGunController : MonoBehaviour
 
     public void OnBluePortal()
     {
-        if (timer <= 0f)
+        if (CanShootPortal())
         {
             ShootPortal(bluePortal);
             timer = coolDown;
@@ -36,11 +38,16 @@ public class PortalGunController : MonoBehaviour
 
     public void OnOrangePortal()
     {
-        if (timer <= 0f)
+        if (CanShootPortal())
         {
             ShootPortal(orangePortal);
             timer = coolDown;
         }
+    }
+
+    private bool CanShootPortal()
+    {
+        return timer <= 0 && attachObjectController.CanShoot();
     }
 
     public void ShootPortal(GameObject portal)

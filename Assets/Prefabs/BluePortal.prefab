@@ -50,11 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherPortal: {fileID: 0}
   mirrorPortal: {fileID: 0}
-  portalCamera: {fileID: 0}
+  portalCamera: {fileID: 97201224722782711}
   cameraOffset: 0.6
-  minClipDistance: 0.1
-  maxClipDistance: 1
-  player: {fileID: 0}
+  playerCamera: {fileID: 0}
 --- !u!1 &1953041527972683270
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +63,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7232176205642846069}
   - component: {fileID: 97201224722782711}
-  - component: {fileID: 673818528188731795}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -139,14 +136,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &673818528188731795
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953041527972683270}
-  m_Enabled: 1
 --- !u!1 &3722598683531193702
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +148,7 @@ GameObject:
   - component: {fileID: 5332163987971231466}
   - component: {fileID: 8497707525686889738}
   - component: {fileID: 3747381123984536866}
+  - component: {fileID: 2154685939647387657}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -246,12 +236,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0000002, y: 66.87183, z: 1.0000005}
   m_Center: {x: -0.00000063658433, y: 12.473126, z: -0.00000016000337}
+--- !u!114 &2154685939647387657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722598683531193702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df946fde1ba1b35429bd04012bbc7e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalController: {fileID: 5443249690449980753}
 --- !u!1 &5838086881927823490
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,13 +279,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5838086881927823490}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 462789755230758949}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8660669744599789127
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class AttachObjectController : MonoBehaviour
 
     private void OnBluePortal()
     {
-        if (attachedObject || attachingObject)
+        if (!CanShoot())
         {
             DetachObject(detachObjectForce);
         }
@@ -31,13 +31,18 @@ public class AttachObjectController : MonoBehaviour
 
     private void OnOrangePortal()
     {
-        if (attachedObject || attachingObject)
+        if (!CanShoot())
         {
             DetachObject(0.0f);
         }
     }
 
     // Controller Logic
+
+    public bool CanShoot()
+    {
+        return !(attachedObject || attachingObject);
+    }
 
     private void Update()
     {
@@ -55,7 +60,7 @@ public class AttachObjectController : MonoBehaviour
         {
             return;
         }
-        if (!hit.collider.CompareTag("CompanionCube"))
+        if (!hit.collider.CompareTag("Cube"))
         {
             return;
         }

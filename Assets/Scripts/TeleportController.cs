@@ -4,30 +4,11 @@ public class TeleportController : MonoBehaviour
 {
     private Vector3 movementDirection;
     public float maxTeleportAngle = 20;
-    private PortalController portalController;
 
-    private void Start()
+    public void Teleport(PortalController portalController)
     {
-        portalController = GetComponent<PortalController>();
-    }
+        movementDirection = GetComponent<MovementController>().MovementDirection;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-        {
-            return;
-        }
-        MovementController movementController = other.GetComponent<MovementController>();
-        if (!movementController)
-        {
-            return;
-        }
-        movementDirection = movementController.MovementDirection;
-        Teleport();
-    }
-
-    void Teleport()
-    {
         float dotAngle = Vector3.Dot(movementDirection, portalController.otherPortal.transform.position);
         if (dotAngle >= Mathf.Cos(maxTeleportAngle * Mathf.Deg2Rad))
         {

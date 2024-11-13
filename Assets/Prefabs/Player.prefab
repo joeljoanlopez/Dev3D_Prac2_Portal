@@ -556,6 +556,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: a1416dba650229e4f96c511c2225e9a3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6901966160510883883}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: a1416dba650229e4f96c511c2225e9a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8542049159678536307}
   m_SourcePrefab: {fileID: 100100000, guid: a1416dba650229e4f96c511c2225e9a3, type: 3}
 --- !u!4 &3162549233876390553 stripped
 Transform:
@@ -613,3 +616,21 @@ MonoBehaviour:
   orangePortal: {fileID: 0}
   coolDown: 0.5
   maxPortalDistance: 100
+--- !u!114 &8542049159678536307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162549233876553401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb92cdc4119516647810fb24fcfe0312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 4979883781211561315}
+  attachTransform: {fileID: 8540442680026416222}
+  attachObjectSpeed: 10
+  startRotatingDistance: 1
+  detachObjectForce: 20
+  minAttachDistance: 1

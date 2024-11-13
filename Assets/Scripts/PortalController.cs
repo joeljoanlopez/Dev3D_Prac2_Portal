@@ -11,22 +11,20 @@ public class PortalController : MonoBehaviour
 
     [Header("Camera")]
     public Camera portalCamera;
-    public float cameraOffset = 1.0f;
-    public float minClipDistance = 0.1f;
-    public float maxClipDistance = 1.0f;
+    public float cameraOffset = 0.6f;
 
     [Header("Other")]
-    public GameObject player;
+    public Transform playerCamera;
 
     public void Update()
     {
-        Vector3 playerPosition = otherPortal.InverseTransformPoint(portalCamera.transform.position);
-        mirrorPortal.portalCamera.transform.position = otherPortal.transform.TransformPoint(playerPosition);
+        Vector3 localPosition = transform.InverseTransformPoint(playerCamera.transform.position);
+        mirrorPortal.portalCamera.transform.position = otherPortal.transform.TransformPoint(localPosition);
 
-        Vector3 playerDirection = otherPortal.InverseTransformDirection(portalCamera.transform.forward);
-        mirrorPortal.portalCamera.transform.forward = otherPortal.transform.TransformDirection(playerDirection);
+        Vector3 localDirection = transform.InverseTransformDirection(playerCamera.transform.forward);
+        mirrorPortal.portalCamera.transform.forward = otherPortal.transform.TransformDirection(localDirection);
 
-        portalCamera.nearClipPlane = Vector3.Distance(portalCamera.transform.position, transform.position);
+        portalCamera.nearClipPlane = Vector3.Distance(portalCamera.transform.position, transform.position) + cameraOffset;
     }
 
     public void SpawnIn(Vector3 position, Quaternion rotation)
