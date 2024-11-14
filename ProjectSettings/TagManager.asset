@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Cube
+  - Spawner
   layers:
   - Default
   - TransparentFX

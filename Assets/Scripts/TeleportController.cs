@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class TeleportController : MonoBehaviour
 {
@@ -16,10 +17,6 @@ public class TeleportController : MonoBehaviour
     private void Update()
     {
         teleportTimer -= Time.deltaTime;
-        if (teleportTimer >= 0)
-        {
-            Debug.Log("Current forward is " + transform.forward);
-        }
     }
 
     public void Teleport(PortalController portalController)
@@ -41,20 +38,17 @@ public class TeleportController : MonoBehaviour
 
             Vector3 forward = transform.forward;
             Vector3 localForward = portalController.transform.InverseTransformDirection(forward);
-            Vector3 worldForward = portalController.otherPortal.transform.TransformDirection(localForward);
+            Vector3 worldForward = portalController.mirrorPortal.transform.TransformDirection(-localForward);
 
             Vector3 entranceRotation = transform.rotation.eulerAngles;
-
             CharacterController characterController = GetComponent<CharacterController>();
             if (characterController != null)
             {
                 characterController.enabled = false;
                 transform.position = worldPosition;
-                transform.position = worldForward;
+                transform.forward = worldForward;
                 characterController.enabled = true;
 
-                Debug.Log("Old forward: " + forward + ", New forward " + transform.forward);
-                Debug.Log("Old Rotation: " + entranceRotation + ", New rotation " + transform.rotation.eulerAngles);
             }
         }
     }

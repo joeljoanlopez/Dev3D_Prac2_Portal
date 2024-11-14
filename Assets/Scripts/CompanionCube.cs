@@ -19,7 +19,8 @@ public class CompanionCube : MonoBehaviour
     {
         teleportTimer -= Time.deltaTime;
     }
-    void OnRestart()
+
+    public void Restart()
     {
         transform.position = spawner.position;
     }

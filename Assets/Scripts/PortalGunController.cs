@@ -45,6 +45,20 @@ public class PortalGunController : MonoBehaviour
         }
     }
 
+    void OnAttach()
+    {
+        if (CanShootPortal())
+        {
+            RaycastHit hit = ShootRay();
+            if (!hit.collider.CompareTag("Spawner"))
+            {
+                return;
+            }
+            Debug.Log("Ray shot");
+            hit.collider.GetComponent<CompanionSpawnerController>().SpawnCube();
+        }
+    }
+
     private bool CanShootPortal()
     {
         return timer <= 0 && attachObjectController.CanShoot();
@@ -52,21 +66,28 @@ public class PortalGunController : MonoBehaviour
 
     public void ShootPortal(GameObject portal)
     {
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        RaycastHit hit;
-
-        if (!Physics.Raycast(ray, out hit, maxPortalDistance))
-        {
-            return;
-        }
-
+        RaycastHit hit = ShootRay();
         if (!hit.collider.CompareTag("Wall"))
         {
             return;
         }
 
+        if (!portal.activeSelf)
+        {
+            portal.SetActive(true);
+        }
+
         portal.SetActive(true);
         PortalController portalController = portal.GetComponent<PortalController>();
         portalController?.SpawnIn(hit.point, Quaternion.LookRotation(hit.normal));
+    }
+
+    private RaycastHit ShootRay()
+    {
+
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit, maxPortalDistance);
+        return hit;
     }
 }

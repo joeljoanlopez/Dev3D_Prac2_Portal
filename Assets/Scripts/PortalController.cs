@@ -16,6 +16,11 @@ public class PortalController : MonoBehaviour
     [Header("Other")]
     public Transform playerCamera;
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void Update()
     {
         Vector3 localPosition = transform.InverseTransformPoint(playerCamera.transform.position);

@@ -13,10 +13,10 @@ El desenvolupament d’aquesta pràctica es farà en grups de 2 alumnes. No es p
 - TODO - **Escenari (0.5p)**: Utilitzant els assets pujats a l’eCampus s’haurà de crear un escenari jugable que s’adapti a les necessitats dels següents punts creant un nivell amb gameplay a l’estil Portal (puzles).
 - DONE - **Portal Gun (1p)**: El nostre personatge principal tindrà una pistola que generarà portals. Aquests portals només es podran crear en les superfícies vàlides. Hauran d’haver superfícies on no es puguin crear portals. Els portals només es podran crear en posicions on es puguin crear completament sense quedar tallats o bloquejats per algun cap altre objecte o geometria. Amb el primer botó del ratolí es crearà el portal blau i amb el segon botó el taronja Una vegada premut el botó del ratolí, abans de soltar-lo es el portal indicant si es pot crear en aquest espai o no.
 - DONE - **Portals (1p)**: Aquests portals hauran de mostrar-se l’altre costat del portal complementari. El player podrà mirar a través d’ells com si fos una finestra. Si el player es mou davant d’aquest la perspectiva haurà de canviar.
-- TODO - **Teleport (0.5p)**: El jugador podrà entrar a través dels portals i teletransportar-se d’un portal a altre. La sortida del portal dependrà de l’entrada. Si entrem en diagonal a un portal, haurem de sortir en la mateixa direcció en l’altre portal.
-- TODO - **Companion Cubes (1p)**: En l’escena haurà un sortidor de cubs que s’activi cada vegada que polsem un botó. Aquests cubs activaran botons si es posen a sobre d’ells.
-- TODO - **Gravity Gun (1p)**: L’arma també haurà de ser capaç d’agafar cubs al fer clic en ells si estan a una certa distància. Aquests hauran de venir cap a l’arma i quedar-se flotant davant d’ella. Al tornar a fer clic el cub sortirà disparat. Si es prem el segon botó del ratolí caurà al terra.
-- TODO - **Teleport Cubes (0.5p)**: Si aquests cubs són llançats cap a un portal, aquests hauran de teletransportar-se també i sortir en la mateixa posició i direcció que s’esperaria per l’altre costat i amb la mateixa velocitat.
+- DONE - **Teleport (0.5p)**: El jugador podrà entrar a través dels portals i teletransportar-se d’un portal a altre. La sortida del portal dependrà de l’entrada. Si entrem en diagonal a un portal, haurem de sortir en la mateixa direcció en l’altre portal.
+- DONE - **Companion Cubes (1p)**: En l’escena haurà un sortidor de cubs que s’activi cada vegada que polsem un botó. Aquests cubs activaran botons si es posen a sobre d’ells.
+- DONE - **Gravity Gun (1p)**: L’arma també haurà de ser capaç d’agafar cubs al fer clic en ells si estan a una certa distància. Aquests hauran de venir cap a l’arma i quedar-se flotant davant d’ella. Al tornar a fer clic el cub sortirà disparat. Si es prem el segon botó del ratolí caurà al terra.
+- DONE - **Teleport Cubes (0.5p)**: Si aquests cubs són llançats cap a un portal, aquests hauran de teletransportar-se també i sortir en la mateixa posició i direcció que s’esperaria per l’altre costat i amb la mateixa velocitat.
 - TODO - **Resizing (0.5p)**: Una vegada es previsualitza el portal blau abans de col·locar-se, amb la roda del ratolí podrà canviar-se la seva mida des d’un 50% de la seva mida normal fins a un 200%. Els cubs al teletransportar-se entre portals hauran d’adaptar la seva mida a aquestes proporcions. Si es fa un portal blau al 50% i entra un cub normal pel taronja, aquest sortirà al 50% de la seva mida. Si entra pel blau, sortirà al doble de la seva mida.
 - TODO - **Turrets (1p)**: També haurà d’haver torretes enemigues. Aquestes llançaran un làser vermell que si el Player el toca morirà a l’instant. Aquestes torretes es desactivaran si li llencem un cub, o si les llencem una altra torreta. Les torretes també podran agafar- se amb el gravity gun. Quan s’agafen es col·locaran en la pistola de tal forma que el làser quedarà disparant cap endavant. Les torretes moriran si les toca el làser d’una altra torreta.
 - **_BONUS POINTS_ (màxim 3 punts)** Aquest punt només s’avaluaran si s’han implementat tota la resta de punts. Completa el nivell amb els següents punts:
@@ -36,7 +36,7 @@ El desenvolupament d’aquesta pràctica es farà en grups de 2 alumnes. No es p
     làsers podran ser desviats per un refraction cube. El làser reflectit haurà d’arribar a un
     interruptor que permetrà obrir una porta.
   - TODO - **Blocking cube**: Els companion cubes hauran de bloquejar els làsers.
-  - TODO - **Crosshair**: El punter del ratolí mostrarà en color el portal ja creat, i buit si encara no
+  - DONE - **Crosshair**: El punter del ratolí mostrarà en color el portal ja creat, i buit si encara no
     s’ha posat el portal.
 
 ## Entrega
