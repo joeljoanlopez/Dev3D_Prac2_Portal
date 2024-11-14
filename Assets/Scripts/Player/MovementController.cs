@@ -69,10 +69,10 @@ public class MovementController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float maxSpeed = playerInput.actions["Run"].IsPressed() ? runMaxSpeed : walkMaxSpeed;
-        Vector3 targetVelocity = (moveInput.x * transform.right + moveInput.y * transform.forward) * maxSpeed;
-        velocity = Vector3.Lerp(velocity, targetVelocity, acceleration * Time.deltaTime);
         movementDirection = (moveInput.x * transform.right + moveInput.y * transform.forward).normalized;
+        float maxSpeed = playerInput.actions["Run"].IsPressed() ? runMaxSpeed : walkMaxSpeed;
+        Vector3 targetVelocity = movementDirection * maxSpeed;
+        velocity = Vector3.Lerp(velocity, targetVelocity, acceleration * Time.deltaTime);
     }
 
     private void HandleJump()
@@ -85,11 +85,12 @@ public class MovementController : MonoBehaviour
 
     private void HandleCamera()
     {
-        horizontalRotation += lookInput.x * cameraSensitivity * Time.deltaTime;
+        horizontalRotation = lookInput.x * cameraSensitivity * Time.deltaTime;
+
         verticalRotation -= lookInput.y * cameraSensitivity * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, minPitch, maxPitch);
 
-        transform.localRotation = Quaternion.Euler(0f, horizontalRotation, 0f);
+        transform.Rotate(Vector3.up * horizontalRotation);
         pitchController.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
 }

@@ -51,15 +51,12 @@ public class CompanionCube : MonoBehaviour
 
         Vector3 forward = transform.forward;
         Vector3 localForward = portal.transform.InverseTransformDirection(forward);
-        Vector3 worldForward = portal.mirrorPortal.transform.TransformDirection(localForward);
+        Vector3 worldForward = portal.mirrorPortal.transform.TransformDirection(-localForward);
 
         Vector3 localVelocity = portal.transform.InverseTransformDirection(rigidbody.velocity);
         Vector3 worldVelocity = portal.mirrorPortal.transform.TransformDirection(-localVelocity);
 
         float scale = portal.mirrorPortal.transform.localScale.x / portal.transform.localScale.x;
-
-        Debug.Log($"Original Position: {position}, New Position: {worldPosition}");
-        Debug.Log($"Original Forward: {forward}, New Forward: {worldForward}");
 
         rigidbody.isKinematic = true;
         rigidbody.transform.position = worldPosition;
