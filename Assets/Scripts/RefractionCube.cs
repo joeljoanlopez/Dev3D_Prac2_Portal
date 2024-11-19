@@ -4,36 +4,41 @@ using UnityEngine;
 
 public class RefractionCube : MonoBehaviour
 {
-    public LineRenderer m_laser;
-    public LayerMask m_PhysicsLayerMask;
-    public float m_MaxDistance = 50.0f;
-    bool m_CreateRefraction = false;
+    public LineRenderer laser;
+    public LayerMask layerMask;
+    public float maxDistance = 50.0f;
+    bool createRefraction = false;
+
+    private void Start()
+    {
+        laser = GetComponent<LineRenderer>();
+    }
 
     void Update()
     {
-        m_laser.gameObject.SetActive(m_CreateRefraction);
-        m_CreateRefraction = false;
+        laser.gameObject.SetActive(createRefraction);
+        createRefraction = false;
     }
 
     public void ReflectLaser()
     {
-        if (m_CreateRefraction)
+        if (createRefraction)
             return;
 
-        m_CreateRefraction = true;
-        Ray l_Ray = new Ray(m_laser.transform.position, m_laser.transform.forward);
+        createRefraction = true;
+        Ray ray = new Ray(laser.transform.position, laser.transform.forward);
 
-        if (Physics.Raycast(l_Ray, out RaycastHit l_RaycastHit, m_MaxDistance, m_PhysicsLayerMask.value))
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, layerMask.value))
         {
-            m_laser.SetPosition(1, new Vector3(0.0f, 0.0f, l_RaycastHit.distance));
-            m_laser.gameObject.SetActive(true);
+            laser.SetPosition(1, new Vector3(0.0f, 0.0f, hit.distance));
+            laser.gameObject.SetActive(true);
 
-            if (l_RaycastHit.collider.CompareTag("RefractionCube"))
+            if (hit.collider.CompareTag("RefractionCube"))
             {
-                l_RaycastHit.collider.GetComponent<RefractionCube>().ReflectLaser();
+                hit.collider.GetComponent<RefractionCube>().ReflectLaser();
             }
         }
         else
-            m_laser.gameObject.SetActive(false);
+            laser.gameObject.SetActive(false);
     }
 }

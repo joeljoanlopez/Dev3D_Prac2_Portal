@@ -60,7 +60,7 @@ public class AttachObjectController : MonoBehaviour
         {
             return;
         }
-        if (!hit.collider.CompareTag("Cube"))
+        if (!hit.collider.CompareTag("Cube") && !hit.collider.CompareTag("Turret"))
         {
             return;
         }
@@ -86,6 +86,7 @@ public class AttachObjectController : MonoBehaviour
         attachingObject = false;
         attachedObject = false;
         attachObjectRigidBody.GetComponent<CompanionCube>().SetTeleportable(true);
+        attachObjectRigidBody.GetComponent<TurretController>()?.DisableLaser();
     }
 
     void UpdateAttachingObject()
